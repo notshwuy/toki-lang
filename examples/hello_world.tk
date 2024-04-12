@@ -1,0 +1,5 @@
+import toki/fmt
+
+fun main() {
+	fmt.println("Hello, world!")
+}
