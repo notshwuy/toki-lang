@@ -1,1 +1,1 @@
-pub struct Parser;
+pub mod parser;
