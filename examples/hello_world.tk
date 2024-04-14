@@ -1,5 +1,5 @@
-import toki/fmt
+import std/fmt
 
 fun main() {
-	fmt.println("Hello, world!")
+	fmt.writeln("Hello, world!")
 }
