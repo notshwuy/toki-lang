@@ -17,7 +17,7 @@ pub enum Expression {
     Dot,
 }
 
-pub fn parser() -> impl Parser<char, Vec<Expression>, Error = Simple<char>> {
+fn parser() -> impl Parser<char, Vec<Expression>, Error = Simple<char>> {
     let ident = text::ident().padded();
     let dot = just(".").map(|_| Expression::Dot);
 
@@ -78,4 +78,8 @@ pub fn parser() -> impl Parser<char, Vec<Expression>, Error = Simple<char>> {
     let program = recursive(|_| import.clone().or(function).repeated().collect().padded());
 
     program.then_ignore(end())
+}
+
+pub fn parse(source_code: &str) -> Result<Vec<Expression>, Vec<Simple<char>>> {
+    parser().parse(source_code)
 }

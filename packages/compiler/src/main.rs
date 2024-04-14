@@ -1,5 +1,7 @@
 use std::{env, fs};
 
+use toki_parser::parser;
+
 fn main() {
     let arguments: Vec<String> = env::args().collect();
     let first_argument = &arguments[1];
@@ -9,5 +11,7 @@ fn main() {
         first_argument
     ));
 
-    println!("{:?}", script_contents);
+    let ast = parser::parse(&script_contents);
+
+    println!("{:?}", ast);
 }
